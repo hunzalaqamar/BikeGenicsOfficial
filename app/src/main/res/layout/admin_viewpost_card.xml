@@ -1,0 +1,87 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.208">
+
+
+    <ImageView
+        android:id="@+id/viewPost_userImage"
+        android:layout_width="90sp"
+        android:layout_height="87dp"
+        android:background="@drawable/circle_image"
+        android:src="@drawable/ic_upload" />
+
+    <TextView
+        android:id="@+id/viewPost__userName"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="User full name"
+        android:textAlignment="center"></TextView>
+
+    <TextView
+        android:id="@+id/viewPost_dateTime"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Date and Time"
+        android:textAlignment="center">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/user_viewpost_postdesc"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20sp"
+        android:background="@color/txtColor"
+        android:ems="10"
+        android:fontFamily="@font/poppins_light"
+        android:hint="Post Description"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textDirection="firstStrongRtl"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.472" />
+
+    <ImageView
+        android:id="@+id/user_viewpost_postImage"
+        android:layout_width="match_parent"
+        android:layout_height="229dp"
+        android:src="@drawable/ic_upload" />
+
+    <Button
+        android:id="@+id/viewPost_editPost_btn"
+        android:layout_width="243dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:background="@color/imagebackground"
+        android:fontFamily="@font/poppins_light"
+        android:gravity="center"
+        android:text="@string/editpost"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.891" />
+</LinearLayout>

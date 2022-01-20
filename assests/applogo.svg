@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient data-v-fde0c5aa="" gradientTransform="rotate(25)" id="ffb3b4f2-3840-4f7d-9964-98ae60953104" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop data-v-fde0c5aa="" offset="0" stop-color="#000A68" stop-opacity="1"/>
+      <stop data-v-fde0c5aa="" offset="1" stop-color="#00C4EE" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect data-v-fde0c5aa="" fill="transparent" x="91.737" y="92.997" width="300" height="300" class="logo-background-square"/>
+  <g data-v-fde0c5aa="" id="93197930-affb-4464-a458-9bd10fac7a46" fill="#000000" transform="matrix(2.876704, 0, 0, 2.876704, 294.212681, 219.185352)"/>
+  <g data-v-fde0c5aa="" id="2ee18f0d-c0d7-40f6-8c46-86e6aa1d3035" stroke="url(#ffb3b4f2-3840-4f7d-9964-98ae60953104)" fill="none" transform="matrix(1.997893, 0, 0, 1.997893, 188.002109, 197.847903)">
+    <g stroke-width="2" stroke-miterlimit="10">
+      <circle cx="41.25" cy="33.637" r="5.75"/>
+      <circle cx="6.751" cy="33.637" r="5.751"/>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M32.751 8.613c9.392 2.105 12.312 12.955 12.312 12.955-13.12-2.267-15.714 14.579-15.714 14.579H18.334C17.525 22.379 1 18.331 1 18.331s7.619-2.429 11.341-.323c3.726 2.105 11.336.646 13.121-1.459 1.781-2.104 8.098-2.755 11.5-.484"/>
+    </g>
+  </g>
+  <g data-v-fde0c5aa="" id="75c50733-9bab-4cc2-9af9-d382aafd3d9c" fill="#000000" transform="matrix(0.526976, 0, 0, 0.526976, 294.534184, 258.099644)"/>
+</svg>

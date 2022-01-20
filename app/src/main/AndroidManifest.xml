@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bikegenics">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_applogo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_applogo_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BikeGenics">
+        <activity
+            android:name="User.Activities.About_Us"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.User"/>
+        <activity
+            android:name="User.Activities.User_editProfile"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="User.Activities.User_Profile"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="User.Activities.User_Search"
+            android:exported="false"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="User.Activities.User_Settings"
+            android:exported="false"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="User.Activities.User_EditPost"
+            android:exported="false"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="User.Activities.User_AddPost"
+            android:exported="false"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="User.Activities.User_ViewPost"
+            android:exported="false"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="User.Activities.User_Home"
+            android:exported="false"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.AppCompat.User" />
+        <activity
+            android:name="Admin.Activities.Admin_PostFeed"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="Admin.Activities.Admin_ViewCategory"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="Admin.Activities.Admin_ViewPost"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="Admin.Activities.Admin_EditPost"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="Admin.Activities.Admin_AddPost"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="Admin.Activities.AdminHome"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="nosensor" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1023540541165",
+    "project_id": "bikegenics",
+    "storage_bucket": "bikegenics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023540541165:android:f3332d5c7b5e078df0bee4",
+        "android_client_info": {
+          "package_name": "com.example.bikegenics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023540541165-0u9egpn2l9lu916fkco7d3lqlalm967r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYPqdr4QWI-eOkh6m3-OnLmj4aX1XYKoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023540541165-0u9egpn2l9lu916fkco7d3lqlalm967r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

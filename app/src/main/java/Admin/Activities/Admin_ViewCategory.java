@@ -26,7 +26,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +68,7 @@ public class Admin_ViewCategory extends AppCompatActivity {
 
             TextView txt_back = findViewById(R.id.txt_back);
             txt_back.setOnClickListener(view -> {
-                startActivity(new Intent(getApplicationContext(), AdminHome.class));
+                startActivity(new Intent(getApplicationContext(), Admin_Home.class));
             });
 
         }

@@ -21,7 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import Admin.Activities.AdminHome;
+import Admin.Activities.Admin_Home;
 import User.Activities.User_Home;
 
 public class LoginActivity extends AppCompatActivity {
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (firebaseUser != null) {
             if (firebaseUser.getEmail().equals("admin@bg.com")) {
-                startActivity(new Intent(getApplicationContext(), AdminHome.class));
+                startActivity(new Intent(getApplicationContext(), Admin_Home.class));
             } else {
                 startActivity(new Intent(getApplicationContext(), User_Home.class));
             }
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         if (Email.equals("admin@bg.com")) {
                             Toast.makeText(getApplicationContext(), "User Logged In Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), AdminHome.class));
+                            startActivity(new Intent(getApplicationContext(), Admin_Home.class));
                             progressBar.setVisibility(View.GONE);
                             enableField();
                         } else {

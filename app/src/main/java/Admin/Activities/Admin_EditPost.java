@@ -51,7 +51,7 @@ ImageView edit_post_post_image;
 
         });
         txt_back.setOnClickListener(view -> {
-            Intent in = new Intent(getApplicationContext(), AdminHome.class);
+            Intent in = new Intent(getApplicationContext(), Admin_Home.class);
             startActivity(in);
         });
 

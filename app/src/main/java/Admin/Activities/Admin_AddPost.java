@@ -38,7 +38,7 @@ Spinner spinner_category;
 
 
          txt_back.setOnClickListener(view -> {
-                Intent in = new Intent(getApplicationContext(), AdminHome.class);
+                Intent in = new Intent(getApplicationContext(), Admin_Home.class);
                 startActivity(in);
         });
 
@@ -55,7 +55,7 @@ Spinner spinner_category;
 
         cancel_btn.setOnClickListener(view->{
 
-            Intent in2 = new Intent(getApplicationContext(), AdminHome.class);
+            Intent in2 = new Intent(getApplicationContext(), Admin_Home.class);
             startActivity(in2);
 
         });

@@ -1,6 +1,5 @@
 package Admin.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,30 +7,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bikegenics.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import Admin.Adapter.Admin_AdapterPostFeed;
 import Admin.Adapter.Admin_AdapterViewPost;
-import Admin.DTO.Admin_DTOPostFeed;
 import Admin.DTO.Admin_DTOViewPost;
 
 public class Admin_ViewPost extends AppCompatActivity {
@@ -57,7 +47,7 @@ EditText viewPost_postDesc;
 
         TextView txt_back = findViewById(R.id.txt_back);
         txt_back.setOnClickListener(view -> {
-            Intent in = new Intent(getApplicationContext(), AdminHome.class);
+            Intent in = new Intent(getApplicationContext(), Admin_Home.class);
             startActivity(in);
         });
         viewPost_editPost_btn.setOnClickListener(new View.OnClickListener() {

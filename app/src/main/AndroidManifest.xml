@@ -75,7 +75,7 @@
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="Admin.Activities.AdminHome"
+            android:name="Admin.Activities.Admin_Home"
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity

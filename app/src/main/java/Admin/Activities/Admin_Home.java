@@ -84,8 +84,10 @@ public class Admin_Home extends AppCompatActivity {
                                 btn_ok.setEnabled(false);
                                 btn_cancel.setEnabled(false);
                                 categoryName.setEnabled(false);
+                                String catKey = categoryName.getText().toString().toLowerCase(Locale.ROOT);
+                                catKey = catKey.replaceAll("\\s+","");
                                 Map<String, Object> category = new HashMap<>();
-                                category.put(categoryName.getText().toString().toLowerCase(Locale.ROOT), categoryName.getText().toString());
+                                category.put(catKey, categoryName.getText().toString());
 
                                 db.collection("admin").document("category")
                                         .set(category, SetOptions.merge())

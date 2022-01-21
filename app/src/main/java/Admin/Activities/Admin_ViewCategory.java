@@ -57,9 +57,9 @@ public class Admin_ViewCategory extends AppCompatActivity {
         progressBar.setIndeterminateDrawable(doubleBounce);
 
         if(fUser != null){
-            prepareMovieData();
+            getCategories();
             recyclerView = (RecyclerView) findViewById(R.id.recycler_view1a);
-            mAdapter = new Admin_AdapterViewCategory(getApplicationContext(), CategoryName);
+            mAdapter = new Admin_AdapterViewCategory(Admin_ViewCategory.this, CategoryName);
             RecyclerView.LayoutManager mLayoutManager = new
                     LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(mLayoutManager);
@@ -77,7 +77,7 @@ public class Admin_ViewCategory extends AppCompatActivity {
         }
     }
 
-    private void prepareMovieData() {
+    private void getCategories() {
         DocumentReference docRef = db.collection("admin").document("category");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

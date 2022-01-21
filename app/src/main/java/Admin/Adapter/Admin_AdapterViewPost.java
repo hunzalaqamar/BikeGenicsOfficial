@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,12 +31,13 @@ public class Admin_AdapterViewPost extends RecyclerView.Adapter<Admin_AdapterVie
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView viewPost_userImage, viewPost_postImage;
         public TextView viewPost_userName, viewPost_dateTime;
-        public Button viewPost_editPost_btn;
+        public Button viewPost_editPost_btn, viewPost_delete_btn;
         public EditText viewPost_postDesc;
 
         public MyViewHolder(View view) {
             super(view);
             viewPost_editPost_btn = view.findViewById(R.id.viewPost_editPost_btn);
+            viewPost_delete_btn = view.findViewById(R.id.viewPost_delete_btn);
             viewPost_userImage = (ImageView) view.findViewById(R.id.viewPost_userImage);
             viewPost_postImage = (ImageView) view.findViewById(R.id.user_viewpost_postImage);
             viewPost_userName = (TextView) view.findViewById(R.id.viewPost_userName);
@@ -44,6 +46,13 @@ public class Admin_AdapterViewPost extends RecyclerView.Adapter<Admin_AdapterVie
 
             viewPost_editPost_btn.setOnClickListener(view1 -> {
                 ((Activity)context).startActivity(new Intent(context, Admin_EditPost.class));
+            });
+
+            viewPost_delete_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "This is post delete", Toast.LENGTH_SHORT).show();
+                }
             });
         }
 

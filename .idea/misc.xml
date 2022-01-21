@@ -45,6 +45,7 @@
         <entry key="..\:/Coding/Android/BikeGenics/BikeGenics/app/src/main/res/mipmap-anydpi-v26/ic_bglogo_round.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/Abubakkar/AndroidStudioProjects/BikeGenics/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Abubakkar/AndroidStudioProjects/BikeGenics/app/src/main/res/layout/activity_main.xml" value="0.18478260869565216" />
+        <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/drawable/circle_image.xml" value="0.2890625" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/drawable/ic_customalert.xml" value="0.2890625" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/activity_admin_add_post.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/activity_admin_edit_post.xml" value="0.14270833333333333" />
@@ -52,8 +53,10 @@
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/activity_admin_view_post.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/activity_login.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/activity_user_add_post.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/activity_user_edit_post.xml" value="0.2586050724637681" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/activity_user_home.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/admin_postfeed_card.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/admin_viewpost_card.xml" value="0.2586050724637681" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/alert_custom.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/Abubakkar/Desktop/BikeGenicsOfficial/app/src/main/res/layout/spinner_row.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/Abubakkar/Documents/BikeGenics/app/src/main/res/drawable/addcategory.xml" value="0.2846153846153846" />

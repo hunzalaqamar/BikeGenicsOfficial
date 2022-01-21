@@ -1,59 +1,73 @@
 package Admin.DTO;
 
 public class Admin_DTOViewPost {
-    int User_image,Post_Image;
+    String ProfileImage;
+    String postTime;
+    String postCategory;
+    String postDescription;
+    String postImage;
+    String FullName;
 
-    String UserName,DateTime,Description;
 
-    public Admin_DTOViewPost(int user_image, int post_Image, String userName, String dateTime, String description) {
-        User_image = user_image;
-        Post_Image = post_Image;
-        UserName = userName;
-        DateTime = dateTime;
-        Description = description;
+    public String getFullName() {
+        return FullName;
     }
 
-
-    public int getUser_image() {
-        return User_image;
+    public void setFullName(String fullName) {
+        FullName = fullName;
     }
 
-    public void setUser_image(int user_image) {
-        User_image = user_image;
+    public Admin_DTOViewPost() {
+        ProfileImage = "";
+        postTime = "";
+        postCategory = "";
+        postDescription = "";
+        postImage = "";
+        FullName = "";
     }
 
-    public int getPost_Image() {
-        return Post_Image;
+    public Admin_DTOViewPost(String profileImage, String FullName) {
+        ProfileImage = profileImage;
+        this.FullName = FullName;
     }
 
-    public void setPost_Image(int post_Image) {
-        Post_Image = post_Image;
+    public String getProfileImage() {
+        return ProfileImage;
     }
 
-    public String getUserName() {
-        return UserName;
+    public void setProfileImage(String profileImage) {
+        ProfileImage = profileImage;
     }
 
-    public void setUserName(String userName) {
-        UserName = userName;
+    public String getPostTime() {
+        return postTime;
     }
 
-    public String getDateTime() {
-        return DateTime;
+    public void setPostTime(String postTime) {
+        this.postTime = postTime;
     }
 
-    public void setDateTime(String dateTime) {
-        DateTime = dateTime;
+    public String getPostCategory() {
+        return postCategory;
     }
 
-    public String getDescription() {
-        return Description;
+    public void setPostCategory(String postCategory) {
+        this.postCategory = postCategory;
     }
 
-    public void setDescription(String description) {
-        Description = description;
+    public String getPostDescription() {
+        return postDescription;
     }
 
+    public void setPostDescription(String postDescription) {
+        this.postDescription = postDescription;
+    }
 
+    public String getPostImage() {
+        return postImage;
+    }
 
+    public void setPostImage(String postImage) {
+        this.postImage = postImage;
+    }
 }

@@ -1,13 +1,6 @@
 package Admin.Activities;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,7 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bikegenics.LoginActivity;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.bikegenics.R;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.Wave;
@@ -31,23 +29,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import Admin.DTO.Admin_DTOViewCategory;
-import User.Activities.User_Home;
+import java.util.UUID;
 
 public class Admin_AddPost extends AppCompatActivity {
 ImageView choose_image;
@@ -211,7 +207,7 @@ Spinner spinner_category;
         disableFields();
 
         if (image != null) {
-            StorageReference reference = storage.getReference().child("image/" + "admin@bg.com");
+            StorageReference reference = storage.getReference().child("image/" + UUID.randomUUID().toString());
             UploadTask uploadTask = reference.putFile(image);
 
             Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -244,10 +240,14 @@ Spinner spinner_category;
         }
     }
     private void addPost() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+
         Map<String, Object> post = new HashMap<>();
         post.put("postCategory", cat);
         post.put("postDescription", description);
         post.put("postImage", downloadUri.toString());
+        post.put("postTime", formatter.format(date));
 
         try {
             db.collection("admin").document("posts").collection("posts").add(post).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

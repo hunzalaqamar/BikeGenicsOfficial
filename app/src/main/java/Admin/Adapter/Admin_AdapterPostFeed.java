@@ -27,14 +27,13 @@ public class Admin_AdapterPostFeed extends RecyclerView.Adapter<Admin_AdapterPos
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public   ImageView image_post_show, image_user_show;
         public  Button delete_btn,contact_btn;
-        public  TextView fullname_txt,date_time_txt;
+        public  TextView date_time_txt;
         public  EditText desc_txt;
         public MyViewHolder(View view) {
             super(view);
 
             image_user_show = view.findViewById(R.id.postfeed_image_user_show);
             image_post_show = view.findViewById(R.id.user_postfeed_postImage);
-            fullname_txt    = view.findViewById(R.id.postfeed_fullname_txt);
             date_time_txt   = view.findViewById(R.id.postfeed_date_time_txt);
             desc_txt        = view.findViewById(R.id.user_postfeed_postdesc);
             delete_btn      = view.findViewById(R.id.user_postfeed_deletebtn);
@@ -62,7 +61,6 @@ public class Admin_AdapterPostFeed extends RecyclerView.Adapter<Admin_AdapterPos
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Admin_DTOPostFeed ADPC = ADPostFeed.get(position);
         holder.image_user_show.setImageResource(ADPC.getUser_image());
-        holder.fullname_txt.setText(ADPC.getUserName());
         holder.date_time_txt.setText(ADPC.getDateTime());
         holder.desc_txt.setText(ADPC.getDescription());
         holder.image_post_show.setImageResource(ADPC.getPost_Image());

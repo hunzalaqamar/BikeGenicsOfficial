@@ -97,8 +97,14 @@ public class Admin_ViewPost extends AppCompatActivity {
                             }
 
                             for(int i=0; i<ViewPostList.size();i++){
-                                ViewPostList.get(i).setFullName(temppost.get(0).toString());
-                                ViewPostList.get(i).setProfileImage(temppost.get(1).toString());
+                                for(int j=0; j<temppost.size();j++){
+                                    if(temppost.get(j).toString().contains("https")){
+                                        ViewPostList.get(i).setProfileImage(temppost.get(j).toString());
+                                    }
+                                    if(temppost.get(j).toString().matches("[a-zA-Z]+")){
+                                        ViewPostList.get(i).setFullName(temppost.get(j).toString());
+                                    }
+                                }
                             }
 
                             mAdapter.notifyDataSetChanged();
@@ -118,11 +124,17 @@ public class Admin_ViewPost extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     progressBar.setVisibility(View.GONE);
                     DocumentSnapshot document = task.getResult();
-                    getAdminPosts();
                     if (document.exists()) {
                         for (Map.Entry<String,Object> entry : document.getData().entrySet()){
                             temppost.add(entry.getValue().toString());
                         }
+
+                        for(int i=0;i<temppost.size();i++){
+                            Log.d("temppost", temppost.get(i).toString());
+                        }
+
+                        getAdminPosts();
+
                     } else {
                         Log.d("I am data", "No such document");
                     }

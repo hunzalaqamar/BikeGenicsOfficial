@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.bikegenics.R;
 
+import java.time.Instant;
 import java.util.List;
 
 import Admin.Activities.Admin_EditPost;
@@ -44,6 +45,7 @@ public class Admin_AdapterViewPost extends RecyclerView.Adapter<Admin_AdapterVie
             viewPost_dateTime = (TextView) view.findViewById(R.id.viewPost_dateTime);
             viewPost_postDesc = (EditText) view.findViewById(R.id.user_viewpost_postdesc);
 
+            viewPost_userImage.setClipToOutline(true);
             viewPost_editPost_btn.setOnClickListener(view1 -> {
                 ((Activity)context).startActivity(new Intent(context, Admin_EditPost.class));
             });
@@ -76,11 +78,11 @@ public class Admin_AdapterViewPost extends RecyclerView.Adapter<Admin_AdapterVie
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Admin_DTOViewPost ADVP = ADViewPost.get(position);
-        Glide.with(context).load(ADVP.getProfileImage().toString()).into(holder.viewPost_userImage);
+        Glide.with(context).load(ADVP.getProfileImage().toString()).dontAnimate().error(R.drawable.ic_no_image).into(holder.viewPost_userImage);
         holder.viewPost_userName.setText(ADVP.getFullName());
         holder.viewPost_dateTime.setText(ADVP.getPostTime());
         holder.viewPost_postDesc.setText(ADVP.getPostDescription());
-        Glide.with(context).load(ADVP.getPostImage()).into(holder.viewPost_postImage);
+        Glide.with(context).load(ADVP.getPostImage()).dontAnimate().error(R.drawable.ic_no_image).into(holder.viewPost_postImage);
     }
 
     @Override

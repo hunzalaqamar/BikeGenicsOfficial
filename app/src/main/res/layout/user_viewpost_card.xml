@@ -1,0 +1,131 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:orientation="vertical"
+        android:layout_marginBottom="75sp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10sp"
+            android:layout_marginStart="5sp">
+            <ImageView
+                android:id="@+id/user_viewPost_userImage"
+                android:layout_width="50sp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle_image"
+                android:clipToOutline="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_upload" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="4sp">
+                <TextView
+                    android:id="@+id/user_viewPost_userName"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="User full name"
+                    android:textColor="@color/black"></TextView>
+
+                <TextView
+                    android:id="@+id/user_viewPost_dateTime"
+                    android:layout_width="200sp"
+                    android:layout_marginTop="5sp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Date and Time"
+                    android:textColor="@color/black"
+                    android:textSize="10sp">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <EditText
+            android:id="@+id/user_viewpost_postdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:padding="7sp"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="20sp"
+            android:ems="10"
+            android:enabled="false"
+            android:fontFamily="@font/poppins_semibold"
+            android:hint="Post Description"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/user_viewpost_postImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_upload" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10sp"
+            android:gravity="center" >
+
+
+            <Button
+                android:id="@+id/user_viewPost_editPost_btn"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:background="@color/btnbg"
+                android:fontFamily="@font/poppins_light"
+                android:gravity="center"
+                android:text="@string/edit"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.219"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.948" />
+
+            <Button
+                android:id="@+id/user_viewPost_delete_btn"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20sp"
+                android:background="@color/cancel"
+                android:fontFamily="@font/poppins_light"
+                android:text="@string/delete"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.738"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.948" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

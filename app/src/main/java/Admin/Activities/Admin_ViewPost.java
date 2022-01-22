@@ -38,6 +38,7 @@ import Admin.DTO.Admin_DTOViewPost;
 
 public class Admin_ViewPost extends AppCompatActivity {
     List<Admin_DTOViewPost> ViewPostList = new ArrayList<>();
+    List <String> postIds = new ArrayList<>();
     RecyclerView recyclerView;
     Admin_AdapterViewPost mAdapter;
     FirebaseAuth mAuth;
@@ -93,6 +94,7 @@ public class Admin_ViewPost extends AppCompatActivity {
                             for (DocumentChange dc : value.getDocumentChanges()) {
                                 if (dc.getType() == DocumentChange.Type.ADDED) {
                                     ViewPostList.add(dc.getDocument().toObject(Admin_DTOViewPost.class));
+                                    postIds.add(dc.getDocument().getId());
                                 }
                             }
 
@@ -105,6 +107,7 @@ public class Admin_ViewPost extends AppCompatActivity {
                                         ViewPostList.get(i).setFullName(temppost.get(j).toString());
                                     }
                                 }
+                                ViewPostList.get(i).setPostId(postIds.get(i).toString());
                             }
 
                             mAdapter.notifyDataSetChanged();

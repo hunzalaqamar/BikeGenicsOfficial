@@ -7,6 +7,16 @@ public class Admin_DTOViewPost {
     String postDescription;
     String postImage;
     String FullName;
+    String postId;
+
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
 
 
     public String getFullName() {
@@ -24,12 +34,14 @@ public class Admin_DTOViewPost {
         postDescription = "";
         postImage = "";
         FullName = "";
+        postId="";
     }
 
-    public Admin_DTOViewPost(String profileImage, String FullName) {
-        ProfileImage = profileImage;
-        this.FullName = FullName;
-    }
+//    public Admin_DTOViewPost(String profileImage, String FullName, String postId) {
+//        ProfileImage = profileImage;
+//        this.FullName = FullName;
+//        this.postId = postId;
+//    }
 
     public String getProfileImage() {
         return ProfileImage;

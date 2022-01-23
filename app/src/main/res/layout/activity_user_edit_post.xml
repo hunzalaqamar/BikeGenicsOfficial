@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/shape"
@@ -25,44 +29,43 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_headerlogo" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10sp">
-
-        <TextView
-            android:id="@+id/txt_back"
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@drawable/arrowshape"
-            android:drawableLeft="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.094" />
-
-
-        <TextView
-            android:id="@+id/textView5"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/editpost"
-            android:textAlignment="center"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.095"
-            tools:ignore="HardcodedText" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_marginTop="10sp">
+            <TextView
+                android:id="@+id/txt_back"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/arrowshape"
+                android:drawableLeft="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.094" />
+
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/editpost"
+                android:textAlignment="center"
+                android:textSize="26sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.095"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -76,6 +79,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -90,35 +94,22 @@
 
 
                 <ImageView
-                    android:id="@+id/user_addPost_postImage"
+                    android:id="@+id/user_edit_post_image_show"
                     android:layout_width="match_parent"
                     android:layout_height="87dp"
                     android:src="@drawable/ic_upload" />
 
-                <EditText
-                    android:id="@+id/user_addPost_postname"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
+                <com.github.ybq.android.spinkit.SpinKitView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/progressBar"
+                    style="@style/SpinKitView.Large.Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/txtshape"
-                    android:ems="10"
-                    android:fontFamily="@font/poppins_light"
-                    android:hint="Post Name"
-                    android:inputType="textPersonName"
-                    android:textAlignment="center"
-                    android:textDirection="firstStrongRtl"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.36" />
+                    app:SpinKit_Color="@color/btnbg" />
 
                 <Spinner
-                    android:id="@+id/user_addPost_categoryname"
+                    android:id="@+id/user_edit_post_selector_category"
                     android:layout_width="280dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -126,7 +117,6 @@
                     android:layout_weight="1"
                     android:background="@color/txtColor"
                     android:ems="10"
-                    android:entries="@array/test"
                     android:fontFamily="@font/poppins_light"
                     android:inputType="textPersonName"
                     android:textAlignment="center"
@@ -140,26 +130,19 @@
                     app:layout_constraintVertical_bias="0.472" />
 
                 <EditText
-                    android:id="@+id/user_addPost_postdesc"
+                    android:id="@+id/user_edit_post_desc"
                     android:layout_width="280dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:background="@color/txtColor"
-                    android:ems="10"
+                    android:padding="7sp"
                     android:fontFamily="@font/poppins_light"
                     android:hint="Post Description"
-                    android:inputType="textPersonName"
-                    android:textAlignment="center"
-                    android:textDirection="firstStrongRtl"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.472" />
+                    android:inputType="textMultiLine"
+                    android:gravity="top|start"
+                    android:textSize="16sp"/>
 
 
                 <LinearLayout
@@ -175,11 +158,11 @@
                     app:layout_constraintVertical_bias="0.208">
 
                     <Button
-                        android:id="@+id/user_editpost_editpostbtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/user_edit_post_save_changes_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
                         android:layout_gravity="center"
-                        android:backgroundTint="@color/btnbg"
+                        android:background="@color/btnbg"
                         android:fontFamily="@font/poppins_light"
                         android:gravity="center"
                         android:text="@string/editpost"
@@ -192,12 +175,12 @@
                         app:layout_constraintVertical_bias="0.948" />
 
                     <Button
-                        android:id="@+id/user_editpost_cancelbtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/user_edit_post_cancel_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="20sp"
-                        android:backgroundTint="@color/cancel"
+                        android:background="@color/cancel"
                         android:fontFamily="@font/poppins_light"
                         android:text="@string/cancel"
                         android:textSize="16sp"
@@ -211,6 +194,8 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+
+
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"

@@ -70,7 +70,7 @@ public class User_EditPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_edit_post);
+        setContentView(R.layout.activity_user_edit_post);
 
         TextView txt_back = findViewById(R.id.txt_back);
 

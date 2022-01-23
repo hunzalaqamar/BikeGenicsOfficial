@@ -45,7 +45,9 @@
         <entry key="..\:/Coding/Android/BikeGenics/BikeGenics/app/src/main/res/mipmap-anydpi-v26/ic_bglogo_round.xml" value="0.15989583333333332" />
         <entry key="..\:/Coding/Android/BikeGenicsOfficial/app/src/main/res/layout/activity_admin_add_post.xml" value="0.14114583333333333" />
         <entry key="..\:/Coding/Android/BikeGenicsOfficial/app/src/main/res/layout/activity_admin_edit_post.xml" value="0.2" />
+        <entry key="..\:/Coding/Android/BikeGenicsOfficial/app/src/main/res/layout/activity_admin_postfeed.xml" value="0.25" />
         <entry key="..\:/Coding/Android/BikeGenicsOfficial/app/src/main/res/layout/activity_admin_view_post.xml" value="0.25" />
+        <entry key="..\:/Coding/Android/BikeGenicsOfficial/app/src/main/res/layout/admin_postfeed_card.xml" value="0.25" />
         <entry key="..\:/Coding/Android/BikeGenicsOfficial/app/src/main/res/layout/admin_viewpost_card.xml" value="0.25" />
         <entry key="..\:/Users/Abubakkar/AndroidStudioProjects/BikeGenics/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Abubakkar/AndroidStudioProjects/BikeGenics/app/src/main/res/layout/activity_main.xml" value="0.18478260869565216" />

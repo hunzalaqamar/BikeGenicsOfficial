@@ -84,7 +84,6 @@ public class Admin_AdapterPostFeed extends RecyclerView.Adapter<Admin_AdapterPos
 
         contact_btn.setOnClickListener(view1 -> {
             dialogView = LayoutInflater.from(view1.getContext()).inflate(R.layout.alert_custom_postfeed, viewGroup, false);
-            Toast.makeText(context, ADPC.getPhoneNumber(), Toast.LENGTH_SHORT).show();
             final AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
             Button btn_call = dialogView.findViewById(R.id.btn_call);
             EditText contactnumber = (EditText) dialogView.findViewById(R.id.contactnumber);
@@ -101,7 +100,6 @@ public class Admin_AdapterPostFeed extends RecyclerView.Adapter<Admin_AdapterPos
                         intent.setData(Uri.parse("tel:"+ADPC.getPhoneNumber()));
                         ((Activity)context).startActivity(intent);
                         alertDialog.dismiss();
-//                        ((ViewGroup)dialogView.getParent()).removeAllViews();
                     }catch (Exception e){
                         e.printStackTrace();
                     }

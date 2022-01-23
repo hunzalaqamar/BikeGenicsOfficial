@@ -29,9 +29,6 @@ public class About_Us extends AppCompatActivity {
         TextView txt_back = findViewById(R.id.txt_back);
 
 
-
-
-
         txt_back.setOnClickListener(view -> {
             Intent in = new Intent(getApplicationContext(), User_Settings.class);
             startActivity(in);

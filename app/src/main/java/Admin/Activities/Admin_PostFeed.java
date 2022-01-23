@@ -49,9 +49,9 @@ public class Admin_PostFeed extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser fUser;
     FirebaseFirestore db;
+    TextView txt_back;
     Sprite doubleBounce;
     ProgressBar progressBar;
-    EditText desc_txt;
     Admin_DTOPostFeed2 adminDetails;
     int indexPL, indexUL;
   
@@ -59,8 +59,7 @@ public class Admin_PostFeed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_postfeed);
-        TextView txt_back = findViewById(R.id.txt_back);
-        desc_txt = findViewById(R.id.user_postfeed_postdesc);
+        txt_back = findViewById(R.id.txt_back);
         mAuth = FirebaseAuth.getInstance();
         fUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();

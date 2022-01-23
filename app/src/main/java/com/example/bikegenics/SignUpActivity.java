@@ -40,6 +40,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText useremail, fullname, phonenumber, age, password;
@@ -53,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseStorage storage;
     ProgressBar progressBar;
     Sprite doubleBounce;
+    String regexPattern;
 
 
     @Override
@@ -73,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         doubleBounce = new Wave();
         progressBar.setVisibility(View.GONE);
+        regexPattern = "^(.+)@(\\S+)$";
 
 
         login_btn.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +86,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-
         signup_btn.setOnClickListener(view -> {
             try {
                 if (TextUtils.isEmpty(fullname.getText().toString())) {
@@ -91,13 +93,13 @@ public class SignUpActivity extends AppCompatActivity {
                     fullname.requestFocus();
                     enableField();
                     progressBar.setVisibility(View.GONE);
-                } else if (TextUtils.isEmpty(phonenumber.getText().toString())) {
-                    phonenumber.setError("Phone Number Cannot be Empty");
+                } else if (TextUtils.isEmpty(phonenumber.getText().toString()) || phonenumber.getText().toString().length() < 11 || !TextUtils.isDigitsOnly(phonenumber.getText().toString())) {
+                    phonenumber.setError("Invalid Phone Number");
                     phonenumber.requestFocus();
                     enableField();
                     progressBar.setVisibility(View.GONE);
-                } else if (TextUtils.isEmpty(age.getText().toString())) {
-                    age.setError("Age Cannot be Empty");
+                } else if (TextUtils.isEmpty(age.getText().toString()) || age.getText().toString().length() < 2) {
+                    age.setError("Invalid Age");
                     age.requestFocus();
                     enableField();
                     progressBar.setVisibility(View.GONE);
@@ -106,8 +108,16 @@ public class SignUpActivity extends AppCompatActivity {
                     useremail.requestFocus();
                     enableField();
                     progressBar.setVisibility(View.GONE);
-                } else if (TextUtils.isEmpty(password.getText().toString())) {
-                    password.setError("Password Cannot be Empty");
+
+                } else if (!Pattern.compile(regexPattern).matcher(useremail.getText().toString()).matches()) {
+
+                    useremail.setError("Invalid Email");
+                    useremail.requestFocus();
+                    enableField();
+                    progressBar.setVisibility(View.GONE);
+
+                } else if (TextUtils.isEmpty(password.getText().toString()) || password.getText().toString().length() < 6) {
+                    password.setError("Invalid Password, Password Length Should be Greater than 6 Characters");
                     password.requestFocus();
                     enableField();
                     progressBar.setVisibility(View.GONE);

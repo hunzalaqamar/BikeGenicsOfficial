@@ -31,9 +31,9 @@ import User.Adapter.User_AdapterViewPost;
 import User.DTO.ProfileDTO;
 
 public class User_Profile extends AppCompatActivity {
-    EditText username,fullname,phonenumber,age,email;
-     TextView login_btn;
-  ImageView user_profile_postImage;
+    EditText username, fullname, phonenumber, age, email;
+    TextView login_btn;
+    ImageView user_profile_postImage;
     User_AdapterViewPost mAdapter;
     FirebaseAuth mAuth;
     FirebaseUser fUser;
@@ -60,65 +60,67 @@ public class User_Profile extends AppCompatActivity {
         doubleBounce = new Wave();
         progressBar.setIndeterminateDrawable(doubleBounce);
         progressBar.setVisibility(View.VISIBLE);
-         if(fUser!=null)
-         {
-             getUserDetails();
-             BottomNavigationView bnv = findViewById(R.id.bottomNavigationView);
-             FloatingActionButton btn = (FloatingActionButton) findViewById(R.id.fab);
-             TextView txt_back = findViewById(R.id.txt_back);
-
-             txt_back.setOnClickListener(view -> {
-                 Intent in = new Intent(getApplicationContext(), User_Settings.class);
-                 startActivity(in);
-
-                 overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
-
-             });
+        if (fUser != null) {
+            user_profile_postImage.setClipToOutline(true);
+            getUserDetails();
+            BottomNavigationView bnv = findViewById(R.id.bottomNavigationView);
+            FloatingActionButton btn = (FloatingActionButton) findViewById(R.id.fab);
+            TextView txt_back = findViewById(R.id.txt_back);
+            progressBar.setVisibility(View.GONE);
 
 
-             btn.setOnClickListener(view ->{
-                 Intent in = new Intent(getApplicationContext(), User_AddPost.class);
-                 startActivity(in);
-                 overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
-             });
+            txt_back.setOnClickListener(view -> {
+                Intent in = new Intent(getApplicationContext(), User_Settings.class);
+                startActivity(in);
 
-             bnv.setBackground(null);
-             bnv.getMenu().getItem(2).setEnabled(false);
-             bnv.getMenu().getItem(4).setChecked(true);
+                overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
+
+            });
 
 
-             bnv.setOnItemSelectedListener(item -> {
-                 switch (item.getItemId()) {
+            btn.setOnClickListener(view -> {
+                Intent in = new Intent(getApplicationContext(), User_AddPost.class);
+                startActivity(in);
+                overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
+            });
 
-                     case R.id.home:
-                         Intent bin = new Intent(getApplicationContext(), User_Home.class);
-                         startActivity(bin);
-                         overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
-                         break;
-                     case R.id.search:
-                         Intent in = new Intent(getApplicationContext(), User_Search.class);
-                         startActivity(in);
-                         overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
-                         break;
-                     case R.id.viewPost:
-                         Intent vin = new Intent(getApplicationContext(), User_ViewPost.class);
-                         startActivity(vin);
-                         overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
-                         break;
-                     case R.id.settings:
-                         Intent sin = new Intent(getApplicationContext(), User_Settings.class);
-                         startActivity(sin);
-                         overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
-                         break;
+            bnv.setBackground(null);
+            bnv.getMenu().getItem(2).setEnabled(false);
+            bnv.getMenu().getItem(4).setChecked(true);
 
-                 }
-                 return true;
-             });
-         }
+
+            bnv.setOnItemSelectedListener(item -> {
+                switch (item.getItemId()) {
+
+                    case R.id.home:
+                        Intent bin = new Intent(getApplicationContext(), User_Home.class);
+                        startActivity(bin);
+                        overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
+                        break;
+                    case R.id.search:
+                        Intent in = new Intent(getApplicationContext(), User_Search.class);
+                        startActivity(in);
+                        overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
+                        break;
+                    case R.id.viewPost:
+                        Intent vin = new Intent(getApplicationContext(), User_ViewPost.class);
+                        startActivity(vin);
+                        overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
+                        break;
+                    case R.id.settings:
+                        Intent sin = new Intent(getApplicationContext(), User_Settings.class);
+                        startActivity(sin);
+                        overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
+                        break;
+
+                }
+                return true;
+            });
+        }
 
     }
 
-    private void getUserDetails(){
+    private void getUserDetails() {
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -134,13 +136,10 @@ public class User_Profile extends AppCompatActivity {
                     email.setText(fUser.getEmail().toString());
                     phonenumber.setText(prfoileDto.getPhoneNumber().toString());
                     Glide.with(User_Profile.this).load(prfoileDto.getProfileImage().toString()).dontAnimate().error(R.drawable.ic_no_image).into(user_profile_postImage);
-                    progressBar.setVisibility(View.GONE);
 
                 }
             });
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
@@ -162,4 +161,4 @@ public class User_Profile extends AppCompatActivity {
                 }).create().show();
     }
 
-    }
+}

@@ -81,13 +81,16 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/shape"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/user_profile_postImage"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:background="@drawable/shape"
+                android:clipToOutline="true"
                 android:src="@drawable/ic_upload" />
-            <com.github.ybq.android.spinkit.SpinKitView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+
+            <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/progressBar"
                 style="@style/SpinKitView.Large.Circle"
                 android:layout_width="wrap_content"

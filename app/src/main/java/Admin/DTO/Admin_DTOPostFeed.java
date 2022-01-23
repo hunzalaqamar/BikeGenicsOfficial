@@ -1,59 +1,79 @@
 package Admin.DTO;
 
 public class Admin_DTOPostFeed {
-    int User_image,Post_Image;
+    String ProfileImage;
+    String postTime;
+    String postCategory;
+    String postDescription;
+    String postImage;
+    String FullName;
+    String PhoneNumber;
 
-    String UserName,DateTime,Description;
 
-    public Admin_DTOPostFeed(int user_image, int post_Image, String userName, String dateTime, String description) {
-        User_image = user_image;
-        Post_Image = post_Image;
-        UserName = userName;
-        DateTime = dateTime;
-        Description = description;
+    public Admin_DTOPostFeed() {
+        ProfileImage = "";
+        postTime = "";
+        postCategory = "";
+        postDescription = "";
+        postImage = "";
+        FullName = "";
+        PhoneNumber = "";
     }
 
-
-    public int getUser_image() {
-        return User_image;
+    public String getPhoneNumber() {
+        return PhoneNumber;
     }
 
-    public void setUser_image(int user_image) {
-        User_image = user_image;
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
     }
 
-    public int getPost_Image() {
-        return Post_Image;
+    public String getProfileImage() {
+        return ProfileImage;
     }
 
-    public void setPost_Image(int post_Image) {
-        Post_Image = post_Image;
+    public void setProfileImage(String profileImage) {
+        ProfileImage = profileImage;
     }
 
-    public String getUserName() {
-        return UserName;
+    public String getPostTime() {
+        return postTime;
     }
 
-    public void setUserName(String userName) {
-        UserName = userName;
+    public void setPostTime(String postTime) {
+        this.postTime = postTime;
     }
 
-    public String getDateTime() {
-        return DateTime;
+    public String getPostCategory() {
+        return postCategory;
     }
 
-    public void setDateTime(String dateTime) {
-        DateTime = dateTime;
+    public void setPostCategory(String postCategory) {
+        this.postCategory = postCategory;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getPostDescription() {
+        return postDescription;
     }
 
-    public void setDescription(String description) {
-        Description = description;
+    public void setPostDescription(String postDescription) {
+        this.postDescription = postDescription;
     }
 
+    public String getPostImage() {
+        return postImage;
+    }
 
+    public void setPostImage(String postImage) {
+        this.postImage = postImage;
+    }
+
+    public String getFullName() {
+        return FullName;
+    }
+
+    public void setFullName(String fullName) {
+        FullName = fullName;
+    }
 
 }

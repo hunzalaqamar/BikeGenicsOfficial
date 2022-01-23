@@ -1,5 +1,7 @@
 package Admin.Activities;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,29 +9,53 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bikegenics.R;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.Wave;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Locale;
+import java.util.Map;
 
 import Admin.Adapter.Admin_AdapterPostFeed;
 import Admin.DTO.Admin_DTOPostFeed;
+import Admin.DTO.Admin_DTOPostFeed2;
+import Admin.DTO.Admin_DTOViewPost;
 
 public class Admin_PostFeed extends AppCompatActivity {
-    List<Admin_DTOPostFeed> PostfeedList = new ArrayList<>();
+    List<Admin_DTOPostFeed> PostfeedList;
     RecyclerView recyclerView;
     Admin_AdapterPostFeed mAdapter;
     FirebaseAuth mAuth;
     FirebaseUser fUser;
     FirebaseFirestore db;
+    Sprite doubleBounce;
+    ProgressBar progressBar;
     EditText desc_txt;
+    Admin_DTOPostFeed2 adminDetails;
+    int indexPL, indexUL;
+    EditText desc_txt;
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,73 +65,153 @@ public class Admin_PostFeed extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fUser = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
-        desc_txt.setEnabled(false);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        doubleBounce = new Wave();
+        progressBar.setIndeterminateDrawable(doubleBounce);
+        PostfeedList = new ArrayList<>();
+        indexPL = 0;
+        indexUL = 0;
+        adminDetails = new Admin_DTOPostFeed2();
 
-        txt_back.setOnClickListener(view -> {
-            Intent in = new Intent(getApplicationContext(), Admin_Home.class);
-            startActivity(in);
-        });
-//        contact_btn.setOnClickListener(view ->{
-//            new AlertDialog.Builder(this)
-//                    .setTitle("Contact Information")
-//                    .setMessage("")////show contact code here
-//                    .setNegativeButton(android.R.string.no, null)
-//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//
-//                        public void onClick(DialogInterface arg0, int arg1) {
-//
-//                        }
-//
-//                    }).create().show();
-//        });
-        if(fUser != null){
-            prepareMovieData();
-            recyclerView = (RecyclerView) findViewById(R.id.recycler_view_PostFeed);
-            mAdapter = new Admin_AdapterPostFeed(getApplicationContext(), PostfeedList);
-            RecyclerView.LayoutManager mLayoutManager = new
-                    LinearLayoutManager(getApplicationContext());
-            recyclerView.setLayoutManager(mLayoutManager);
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(mAdapter);
+        if (fUser != null) {
+            try {
+                progressBar.setVisibility(View.VISIBLE);
+                getUserPosts();
+                getAdminPosts();
+                txt_back.setOnClickListener(view -> {
+                    Intent in = new Intent(getApplicationContext(), Admin_Home.class);
+                    startActivity(in);
+                });
 
+                recyclerView = (RecyclerView) findViewById(R.id.recycler_view_PostFeed);
+                mAdapter = new Admin_AdapterPostFeed(Admin_PostFeed.this, PostfeedList);
+                RecyclerView.LayoutManager mLayoutManager = new
+                        LinearLayoutManager(Admin_PostFeed.this);
+                recyclerView.setLayoutManager(mLayoutManager);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                recyclerView.setAdapter(mAdapter);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
-
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "Please Login", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Please Login Again", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    private void prepareMovieData() {
-     /*   DocumentReference docRef = db.collection("admin").document("category");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    private void getAdminPosts() {
+        getAdminDetails();
+        db.collection("admin").document("posts").collection("posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                try {
+                    for (DocumentChange admindc : value.getDocumentChanges()) {
+                        Log.d("iteration=>", String.valueOf(indexUL));
+                        if (admindc.getType() == DocumentChange.Type.ADDED) {
+                            db.collection("admin").document("posts").collection("posts").document(admindc.getDocument().getId().toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    try{
+                                        if (task.isSuccessful()) {
+                                            progressBar.setVisibility(View.GONE);
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                if (admindc.getType() == DocumentChange.Type.ADDED) {
+                                                    PostfeedList.add(admindc.getDocument().toObject(Admin_DTOPostFeed.class));
+                                                    PostfeedList.get(indexPL).setFullName(adminDetails.getFullName());
+                                                    PostfeedList.get(indexPL).setPhoneNumber(adminDetails.getPhoneNumber());
+                                                    PostfeedList.get(indexPL).setProfileImage(adminDetails.getProfileImage());
+                                                    indexPL++;
+                                                    mAdapter.notifyDataSetChanged();
+                                                }
+
+                                            } else {
+                                                Log.d("I am data", "No such document");
+                                            }
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            Log.d("Task not Successfull", "get failed with ", task.getException());
+                                            progressBar.setVisibility(View.GONE);
+
+                                        }
+                                    }catch (Exception e){
+                                        Toast.makeText(getApplicationContext(), "in catch", Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                    progressBar.setVisibility(View.GONE);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
+    }
+
+    private void getAdminDetails(){
+        db.collection("admin").document("admin@bg.com").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
+                    progressBar.setVisibility(View.GONE);
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        Log.d("I am data", "DocumentSnapshot data: " + document.getData());
-
-                        for (Map.Entry<String,Object> entry : document.getData().entrySet()){
-                            Log.d("data in map", entry.getValue().toString());
-
-                            Admin_DTOViewCategory cat = new Admin_DTOViewCategory(entry.getValue().toString());
-                            CategoryName.add(cat);
-                        }
-
-                        for(int i=0; i<CategoryName.size();i++){
-                            Log.d("data in categoryname", CategoryName.get(i).toString());
-                        }
-                        mAdapter.notifyDataSetChanged();
-
+                        adminDetails = document.toObject(Admin_DTOPostFeed2.class);
                     } else {
                         Log.d("I am data", "No such document");
                     }
                 } else {
+                    Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     Log.d("Task not Successfull", "get failed with ", task.getException());
+                    progressBar.setVisibility(View.GONE);
+
                 }
             }
-        });*/
+        });
+    }
+
+    private void getUserPosts() {
+        db.collection("users").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                try {
+                    for (DocumentChange userdc : value.getDocumentChanges()) {
+                        Log.d("iteration=>", String.valueOf(indexUL));
+                        if (userdc.getType() == DocumentChange.Type.ADDED) {
+                            db.collection("users").document(userdc.getDocument().getId().toString()).collection("posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    try{
+                                        for (DocumentChange dc : value.getDocumentChanges()) {
+                                            Log.d("iterationPL=>", String.valueOf(indexPL));
+                                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                                                PostfeedList.add(dc.getDocument().toObject(Admin_DTOPostFeed.class));
+                                                PostfeedList.get(indexPL).setFullName(userdc.getDocument().toObject(Admin_DTOPostFeed2.class).getFullName());
+                                                PostfeedList.get(indexPL).setPhoneNumber(userdc.getDocument().toObject(Admin_DTOPostFeed2.class).getPhoneNumber());
+                                                PostfeedList.get(indexPL).setProfileImage(userdc.getDocument().toObject(Admin_DTOPostFeed2.class).getProfileImage());
+                                                indexPL++;
+                                                mAdapter.notifyDataSetChanged();
+                                            }
+                                        }
+                                    }catch (Exception e){
+                                        Toast.makeText(getApplicationContext(), "in catch", Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            });
+                        }
+                    }
+                    progressBar.setVisibility(View.GONE);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
     }
 }

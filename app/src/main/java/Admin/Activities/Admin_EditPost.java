@@ -142,14 +142,15 @@ ImageView edit_post_post_image;
                         mGetContent.launch("image/*");
                     }
                 });
-                edit_post_cancel.setOnClickListener(view->{
-                    Intent in = new Intent(getApplicationContext(), Admin_ViewPost.class);
-                    startActivity(in);
 
+                edit_post_cancel.setOnClickListener(view->{
+                    Admin_EditPost.this.finish();
+                    startActivity(new Intent(getApplicationContext(), Admin_ViewPost.class));
                 });
+
                 txt_back.setOnClickListener(view -> {
-                    Intent in = new Intent(getApplicationContext(), Admin_Home.class);
-                    startActivity(in);
+                    Admin_EditPost.this.finish();
+                    startActivity(new Intent(getApplicationContext(), Admin_ViewPost.class));
                 });
 
 
@@ -205,8 +206,6 @@ ImageView edit_post_post_image;
                         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(Admin_EditPost.this, R.layout.spinner_row, categories);
                         edit_post_selector_category.setAdapter(spinnerArrayAdapter);
 
-                        Log.d("spinner count in is", String.valueOf(edit_post_selector_category.getCount()));
-
                         for (int i = 0; i < edit_post_selector_category.getCount(); i++) {
                             if (edit_post_selector_category.getItemAtPosition(i).toString().equalsIgnoreCase(ob.getPostCategory())) {
                                 edit_post_selector_category.setSelection(i);
@@ -215,11 +214,10 @@ ImageView edit_post_post_image;
                         }
 
                     } else {
-                        Log.d("I am data", "No such document");
+                        Toast.makeText(getApplicationContext(), "No such document" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("Task not Successfull", "get failed with ", task.getException());
                     progressBar.setVisibility(View.GONE);
 
                 }

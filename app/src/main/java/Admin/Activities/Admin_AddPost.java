@@ -90,6 +90,7 @@ Spinner spinner_category;
                 progressBar.setVisibility(View.VISIBLE);
                 initializeSpinner();
                 txt_back.setOnClickListener(view -> {
+                    Admin_AddPost.this.finish();
                     startActivity(new Intent(getApplicationContext(), Admin_Home.class));
                 });
 
@@ -117,6 +118,7 @@ Spinner spinner_category;
                 });
 
                 cancel_btn.setOnClickListener(view -> {
+                    Admin_AddPost.this.finish();
                     startActivity(new Intent(getApplicationContext(), Admin_Home.class));
                 });
 
@@ -173,7 +175,6 @@ Spinner spinner_category;
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("Task not Successfull", "get failed with ", task.getException());
                     progressBar.setVisibility(View.GONE);
 
                 }

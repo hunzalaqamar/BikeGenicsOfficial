@@ -68,6 +68,7 @@ public class Admin_ViewCategory extends AppCompatActivity {
 
             TextView txt_back = findViewById(R.id.txt_back);
             txt_back.setOnClickListener(view -> {
+                Admin_ViewCategory.this.finish();
                 startActivity(new Intent(getApplicationContext(), Admin_Home.class));
             });
 
@@ -86,26 +87,20 @@ public class Admin_ViewCategory extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-//                        Log.d("I am data", "DocumentSnapshot data: " + document.getData());
 
                         for (Map.Entry<String,Object> entry : document.getData().entrySet()){
-                            Log.d("data in map", entry.getValue().toString());
 
                             Admin_DTOViewCategory cat = new Admin_DTOViewCategory(entry.getValue().toString());
                             CategoryName.add(cat);
                         }
 
-//                        for(int i=0; i<CategoryName.size();i++){
-//                            Log.d("data in categoryname", CategoryName.get(i).toString());
-//                        }
                         mAdapter.notifyDataSetChanged();
 
                     } else {
-                        Log.d("I am data", "No such document");
+                        Toast.makeText(getApplicationContext(), "No such document" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("Task not Successfull", "get failed with ", task.getException());
                     progressBar.setVisibility(View.GONE);
 
                 }

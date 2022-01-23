@@ -67,6 +67,7 @@ public class Admin_ViewPost extends AppCompatActivity {
                 getAdminDetails();
                 TextView txt_back = findViewById(R.id.txt_back);
                 txt_back.setOnClickListener(view -> {
+                    Admin_ViewPost.this.finish();
                     startActivity(new Intent(getApplicationContext(), Admin_Home.class));
                 });
                 recyclerView = (RecyclerView) findViewById(R.id.recycler_view_ViewPost);
@@ -132,18 +133,13 @@ public class Admin_ViewPost extends AppCompatActivity {
                             temppost.add(entry.getValue().toString());
                         }
 
-                        for(int i=0;i<temppost.size();i++){
-                            Log.d("temppost", temppost.get(i).toString());
-                        }
-
                         getAdminPosts();
 
                     } else {
-                        Log.d("I am data", "No such document");
+                        Toast.makeText(getApplicationContext(), "No such document" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("Task not Successfull", "get failed with ", task.getException());
                     progressBar.setVisibility(View.GONE);
 
                 }

@@ -77,9 +77,10 @@ public class Admin_PostFeed extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 getUserPosts();
                 getAdminPosts();
+
                 txt_back.setOnClickListener(view -> {
-                    Intent in = new Intent(getApplicationContext(), Admin_Home.class);
-                    startActivity(in);
+                    Admin_PostFeed.this.finish();
+                    startActivity(new Intent(getApplicationContext(), Admin_Home.class));
                 });
 
                 recyclerView = (RecyclerView) findViewById(R.id.recycler_view_PostFeed);
@@ -126,16 +127,15 @@ public class Admin_PostFeed extends AppCompatActivity {
                                                 }
 
                                             } else {
-                                                Log.d("I am data", "No such document");
+                                                Toast.makeText(getApplicationContext(), "No such document " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         } else {
                                             Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                            Log.d("Task not Successfull", "get failed with ", task.getException());
                                             progressBar.setVisibility(View.GONE);
 
                                         }
                                     }catch (Exception e){
-                                        Toast.makeText(getApplicationContext(), "in catch", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Task not Successfull " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                         e.printStackTrace();
                                     }
                                 }
@@ -165,7 +165,6 @@ public class Admin_PostFeed extends AppCompatActivity {
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Task not Successfull " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("Task not Successfull", "get failed with ", task.getException());
                     progressBar.setVisibility(View.GONE);
 
                 }
@@ -179,14 +178,12 @@ public class Admin_PostFeed extends AppCompatActivity {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 try {
                     for (DocumentChange userdc : value.getDocumentChanges()) {
-                        Log.d("iteration=>", String.valueOf(indexUL));
                         if (userdc.getType() == DocumentChange.Type.ADDED) {
                             db.collection("users").document(userdc.getDocument().getId().toString()).collection("posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                                     try{
                                         for (DocumentChange dc : value.getDocumentChanges()) {
-                                            Log.d("iterationPL=>", String.valueOf(indexPL));
                                             if (dc.getType() == DocumentChange.Type.ADDED) {
                                                 PostfeedList.add(dc.getDocument().toObject(Admin_DTOPostFeed.class));
                                                 PostfeedList.get(indexPL).setFullName(userdc.getDocument().toObject(Admin_DTOPostFeed2.class).getFullName());
@@ -197,10 +194,8 @@ public class Admin_PostFeed extends AppCompatActivity {
                                             }
                                         }
                                     }catch (Exception e){
-                                        Toast.makeText(getApplicationContext(), "in catch", Toast.LENGTH_SHORT).show();
                                         e.printStackTrace();
                                     }
-
                                 }
                             });
                         }

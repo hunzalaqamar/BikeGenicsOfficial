@@ -54,7 +54,6 @@ public class Admin_PostFeed extends AppCompatActivity {
     EditText desc_txt;
     Admin_DTOPostFeed2 adminDetails;
     int indexPL, indexUL;
-    EditText desc_txt;
   
     @Override
     protected void onCreate(Bundle savedInstanceState) {

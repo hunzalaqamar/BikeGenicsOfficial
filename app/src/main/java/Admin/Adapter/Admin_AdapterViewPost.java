@@ -48,7 +48,7 @@ public class Admin_AdapterViewPost extends RecyclerView.Adapter<Admin_AdapterVie
             super(view);
             viewPost_editPost_btn = view.findViewById(R.id.viewPost_editPost_btn);
             viewPost_delete_btn = view.findViewById(R.id.viewPost_delete_btn);
-            viewPost_userImage = (ImageView) view.findViewById(R.id.user_viewPost_userImage);
+            viewPost_userImage = (ImageView) view.findViewById(R.id.viewPost_userImage);
             viewPost_postImage = (ImageView) view.findViewById(R.id.user_viewpost_postImage);
             viewPost_userName = (TextView) view.findViewById(R.id.viewPost_userName);
             viewPost_dateTime = (TextView) view.findViewById(R.id.viewPost_dateTime);

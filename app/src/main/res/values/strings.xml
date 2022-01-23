@@ -39,12 +39,8 @@
     <string name="_1_0_0">1.0.0</string>
     <string name="abubakkar_shahzad">Abubakkar Shahzad</string>
     <string name="hunzla_qamar">Hunzla Qamar</string>
-    <string name="hunzla_qamar_gmail">Hunzla.qamar</string>
+    <string name="hunzla_qamar_gmail">hunzla.qamar@gmail.com</string>
+    <string name="abubakkarshahzad">abubakkarshahzad947@gmail.com</string>
+    <string name="description">Welcome To BikeGenics, This is new platform for Vehicle Sale Purchase and Renting. You can find Vehicles of your choice at the ease of your home and on the click of a Button.</string>
 
-    <string-array name="test">
-        <item>Please Select</item>
-        <item>item1</item>
-        <item>item3</item>
-        <item>item2</item>
-    </string-array>
 </resources>

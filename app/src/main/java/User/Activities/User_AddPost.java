@@ -107,11 +107,13 @@ if(firebaseUser != null)
         txt_back.setOnClickListener(view -> {
             Intent in = new Intent(getApplicationContext(), User_Home.class);
             startActivity(in);
+            User_AddPost.this.finish();
             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
         });
         cancel_btn.setOnClickListener(view -> {
             Intent in = new Intent(getApplicationContext(), User_Home.class);
             startActivity(in);
+            User_AddPost.this.finish();
             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
         });
 
@@ -126,21 +128,25 @@ if(firebaseUser != null)
                 case R.id.home:
                     Intent vin = new Intent(getApplicationContext(), User_Home.class);
                     startActivity(vin);
+                    User_AddPost.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                     break;
                 case R.id.search:
                     Intent in = new Intent(getApplicationContext(), User_Search.class);
                     startActivity(in);
+                    User_AddPost.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                     break;
                 case R.id.viewPost:
                     Intent in1 = new Intent(getApplicationContext(), User_ViewPost.class);
                     startActivity(in1);
+                    User_AddPost.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                     break;
                 case R.id.settings:
                     Intent sin = new Intent(getApplicationContext(), User_Settings.class);
                     startActivity(sin);
+                    User_AddPost.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                     break;
 

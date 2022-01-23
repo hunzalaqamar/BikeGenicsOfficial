@@ -53,22 +53,25 @@ public class About_Us extends AppCompatActivity {
                 case R.id.home:
                     Intent in = new Intent(getApplicationContext(), User_Home.class);
                     startActivity(in);
+                    About_Us.this.finish();
                     overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
                     break;
                 case R.id.search:
                     Intent sin = new Intent(getApplicationContext(), User_Search.class);
                     startActivity(sin);
+                    About_Us.this.finish();
                     overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
                     break;
                 case R.id.viewPost:
                     Intent vin = new Intent(getApplicationContext(), User_ViewPost.class);
                     startActivity(vin);
+                    About_Us.this.finish();
                     overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
                     break;
-
                 case R.id.settings:
                     Intent min = new Intent(getApplicationContext(), User_Settings.class);
                     startActivity(min);
+                    About_Us.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                     break;
             }

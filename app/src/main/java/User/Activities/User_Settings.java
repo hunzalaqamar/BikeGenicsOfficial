@@ -35,19 +35,18 @@ public class User_Settings extends AppCompatActivity {
         TextView txt_back = findViewById(R.id.txt_back);
 
         profile.setOnClickListener(view -> {
-            Intent in = new Intent(getApplicationContext(), User_Profile.class);
-            startActivity(in);
+            startActivity(new Intent(getApplicationContext(), User_Profile.class));
 
             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
         });
         about_us.setOnClickListener(view -> {
-            Intent in = new Intent(getApplicationContext(), About_Us.class);
-            startActivity(in);
+            startActivity(new Intent(getApplicationContext(), About_Us.class));
             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
         });
 
         logout.setOnClickListener(view -> {
             mAuth.signOut();
+            User_Settings.this.finish();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             Toast.makeText(getApplicationContext(), "Logout Successfull", Toast.LENGTH_SHORT).show();
             overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
@@ -55,16 +54,12 @@ public class User_Settings extends AppCompatActivity {
 
 
         txt_back.setOnClickListener(view -> {
-            Intent in = new Intent(getApplicationContext(), User_Home.class);
-            startActivity(in);
-
+            startActivity(new Intent(getApplicationContext(), User_Home.class));
             overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
         });
 
         btn.setOnClickListener(view -> {
-            Intent in = new Intent(getApplicationContext(), User_AddPost.class);
-            startActivity(in);
-
+            startActivity(new Intent(getApplicationContext(), User_AddPost.class));
             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
         });
 
@@ -76,18 +71,18 @@ public class User_Settings extends AppCompatActivity {
         bnv.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home:
-                    Intent in = new Intent(getApplicationContext(), User_Home.class);
-                    startActivity(in);
+                    startActivity(new Intent(getApplicationContext(), User_Home.class));
+                    User_Settings.this.finish();
                     overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
                     break;
                 case R.id.search:
-                    Intent sin = new Intent(getApplicationContext(), User_Search.class);
-                    startActivity(sin);
+                    startActivity(new Intent(getApplicationContext(), User_Search.class));
+                    User_Settings.this.finish();
                     overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
                     break;
                 case R.id.viewPost:
-                    Intent vin = new Intent(getApplicationContext(), User_ViewPost.class);
-                    startActivity(vin);
+                    startActivity(new Intent(getApplicationContext(), User_ViewPost.class));
+                    User_Settings.this.finish();
                     overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
                     break;
             }

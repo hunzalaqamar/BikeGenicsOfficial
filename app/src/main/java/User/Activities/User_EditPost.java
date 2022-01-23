@@ -103,11 +103,13 @@ public class User_EditPost extends AppCompatActivity {
                 txt_back.setOnClickListener(view -> {
                     Intent in = new Intent(getApplicationContext(),  User_ViewPost.class);
                     startActivity(in);
+                    User_EditPost.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                 });
                 edit_post_cancel.setOnClickListener(view -> {
                     Intent in = new Intent(getApplicationContext(),  User_ViewPost.class);
                     startActivity(in);
+                    User_EditPost.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                 });
 
@@ -115,6 +117,7 @@ public class User_EditPost extends AppCompatActivity {
                 btn.setOnClickListener(view ->{
                     Intent in = new Intent(getApplicationContext(), User_AddPost.class);
                     startActivity(in);
+                    User_EditPost.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                 });
 
@@ -126,21 +129,25 @@ public class User_EditPost extends AppCompatActivity {
                         case R.id.home:
                             Intent vin = new Intent(getApplicationContext(), User_Home.class);
                             startActivity(vin);
+                            User_EditPost.this.finish();
                             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                             break;
                         case R.id.search:
                             Intent in = new Intent(getApplicationContext(), User_Search.class);
                             startActivity(in);
+                            User_EditPost.this.finish();
                             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                             break;
                         case R.id.viewPost:
                             Intent in1 = new Intent(getApplicationContext(), User_ViewPost.class);
                             startActivity(in1);
+                            User_EditPost.this.finish();
                             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                             break;
                         case R.id.settings:
                             Intent sin = new Intent(getApplicationContext(), User_Settings.class);
                             startActivity(sin);
+                            User_EditPost.this.finish();
                             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                             break;
 
@@ -195,11 +202,13 @@ public class User_EditPost extends AppCompatActivity {
                 });
                 edit_post_cancel.setOnClickListener(view->{
                     Intent in = new Intent(getApplicationContext(), User_ViewPost.class);
+                    User_EditPost.this.finish();
                     startActivity(in);
 
                 });
                 txt_back.setOnClickListener(view -> {
                     Intent in = new Intent(getApplicationContext(), User_Home.class);
+                    User_EditPost.this.finish();
                     startActivity(in);
                 });
 

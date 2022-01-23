@@ -10,7 +10,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:fillViewport="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="100sp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,8 +19,7 @@
             android:layout_marginTop="20sp"
             android:background="#FFFFFF"
             android:orientation="vertical"
-
-            >
+            android:layout_marginBottom="100sp">
 
 
             <LinearLayout
@@ -95,12 +95,15 @@
             <EditText
                 android:id="@+id/user_aboutus_postdesc"
                 android:layout_width="match_parent"
+                android:padding="10sp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
                 android:layout_height="150sp"
                 android:layout_gravity="center"
                 android:background="@color/bluebg"
                 android:ems="10"
                 android:fontFamily="@font/poppins_light"
-                android:hint="Our app is sexy you know why because it is sexy and we know that so you can rename the text and we love to watch this"
+                android:text="@string/description"
                 android:inputType="textMultiLine"
                 android:textAlignment="center"
                 android:textDirection="firstStrongRtl"
@@ -125,27 +128,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="190sp"
                     android:layout_height="200dp"
-                    android:layout_marginLeft="10sp"
-                    android:src="@drawable/hunzlaaa" />
-
-                <ImageView
-                    android:layout_width="190sp"
-                    android:layout_height="200dp"
-                    android:layout_marginLeft="10sp"
-                    android:src="@drawable/abubakkkar" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                    android:src="@drawable/hunzlaaa"
+                    />
                 <TextView
                     android:layout_width="200sp"
                     android:layout_height="wrap_content"
@@ -154,7 +144,20 @@
                     android:textAlignment="center">
 
                 </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/hunzla_qamar_gmail"
+                    android:textAlignment="center">
 
+                </TextView>
+
+                <ImageView
+                    android:layout_width="190sp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="20sp"
+                    android:src="@drawable/abubakkkar" />
                 <TextView
                     android:layout_width="200sp"
                     android:layout_height="wrap_content"
@@ -163,34 +166,16 @@
                     android:textAlignment="center">
 
                 </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <TextView
-                    android:layout_width="200sp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_light"
-                    android:text="@string/hunzla_qamar_gmail"
-                    android:textAlignment="center">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="200sp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="abubakkarshahzad947"
+                    android:text="@string/abubakkarshahzad"
                     android:textAlignment="center">
 
                 </TextView>
 
             </LinearLayout>
-
 
         </LinearLayout>
     </ScrollView>

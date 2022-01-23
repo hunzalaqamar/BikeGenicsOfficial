@@ -71,16 +71,16 @@ public class User_Profile extends AppCompatActivity {
 
             txt_back.setOnClickListener(view -> {
                 Intent in = new Intent(getApplicationContext(), User_Settings.class);
+                User_Profile.this.finish();
                 startActivity(in);
-
                 overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
-
             });
 
 
             btn.setOnClickListener(view -> {
                 Intent in = new Intent(getApplicationContext(), User_AddPost.class);
                 startActivity(in);
+                User_Profile.this.finish();
                 overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
             });
 
@@ -91,39 +91,38 @@ public class User_Profile extends AppCompatActivity {
 
             bnv.setOnItemSelectedListener(item -> {
                 switch (item.getItemId()) {
-
                     case R.id.home:
                         Intent bin = new Intent(getApplicationContext(), User_Home.class);
                         startActivity(bin);
+                        User_Profile.this.finish();
                         overridePendingTransition(R.transition.slide_in_left, R.transition.slide_out_right);
                         break;
                     case R.id.search:
                         Intent in = new Intent(getApplicationContext(), User_Search.class);
                         startActivity(in);
+                        User_Profile.this.finish();
                         overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                         break;
                     case R.id.viewPost:
                         Intent vin = new Intent(getApplicationContext(), User_ViewPost.class);
                         startActivity(vin);
+                        User_Profile.this.finish();
                         overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                         break;
                     case R.id.settings:
                         Intent sin = new Intent(getApplicationContext(), User_Settings.class);
                         startActivity(sin);
+                        User_Profile.this.finish();
                         overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                         break;
-
                 }
                 return true;
             });
         }
-
     }
 
     private void getUserDetails() {
-
         progressBar.setVisibility(View.VISIBLE);
-
         try {
             DocumentReference docRef = db.collection("users").document(fUser.getEmail().toString());
             docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

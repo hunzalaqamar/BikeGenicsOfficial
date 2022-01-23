@@ -92,12 +92,9 @@ public class User_Home extends AppCompatActivity {
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(mAdapter);
 
-                txt_back.setOnClickListener(view -> {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                });
-
                 btn.setOnClickListener(view -> {
                     startActivity(new Intent(getApplicationContext(), User_AddPost.class));
+                    User_Home.this.finish();
                     overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                 });
 
@@ -110,16 +107,19 @@ public class User_Home extends AppCompatActivity {
                         case R.id.search:
                             Intent in = new Intent(getApplicationContext(), User_Search.class);
                             startActivity(in);
+                            User_Home.this.finish();
                             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                             break;
                         case R.id.viewPost:
                             Intent vin = new Intent(getApplicationContext(), User_ViewPost.class);
                             startActivity(vin);
+                            User_Home.this.finish();
                             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                             break;
                         case R.id.settings:
                             Intent sin = new Intent(getApplicationContext(), User_Settings.class);
                             startActivity(sin);
+                            User_Home.this.finish();
                             overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                             break;
 

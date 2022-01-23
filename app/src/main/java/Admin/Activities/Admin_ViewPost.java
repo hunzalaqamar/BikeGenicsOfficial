@@ -104,7 +104,7 @@ public class Admin_ViewPost extends AppCompatActivity {
                                     if(temppost.get(j).toString().contains("https")){
                                         ViewPostList.get(i).setProfileImage(temppost.get(j).toString());
                                     }
-                                    if(temppost.get(j).toString().matches("[a-zA-Z]+")){
+                                    if(temppost.get(j).toString().matches("[a-zA-Z ]+")){
                                         ViewPostList.get(i).setFullName(temppost.get(j).toString());
                                     }
                                 }

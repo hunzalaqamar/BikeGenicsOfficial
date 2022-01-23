@@ -78,8 +78,8 @@ public class SignUpActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                SignUpActivity.this.finish();
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
         });
 
@@ -222,6 +222,7 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(getApplicationContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show();
+                                SignUpActivity.this.finish();
                                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                 progressBar.setVisibility(View.GONE);
                                 enableField();

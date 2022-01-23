@@ -113,6 +113,7 @@ public class Admin_AdapterViewPost extends RecyclerView.Adapter<Admin_AdapterVie
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Toast.makeText(context, "Post Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                    ((Activity)context).finish();
                                     ((Activity)context).startActivity(new Intent(context, Admin_ViewPost.class));
                                 }
                             }).addOnFailureListener(new OnFailureListener() {

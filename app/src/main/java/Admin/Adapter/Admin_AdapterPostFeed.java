@@ -1,6 +1,9 @@
 package Admin.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +11,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bikegenics.R;
+import com.github.ybq.android.spinkit.style.Wave;
 
 import java.util.List;
 
+import Admin.Activities.Admin_Home;
 import Admin.DTO.Admin_DTOPostFeed;
 import Admin.DTO.Admin_DTOViewCategory;
 
@@ -26,6 +33,8 @@ public class Admin_AdapterPostFeed extends RecyclerView.Adapter<Admin_AdapterPos
     private List<Admin_DTOPostFeed> ADPostFeed;
     private Context context;
     public Button contact_btn;
+    View dialogView;
+    ViewGroup viewGroup;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -43,6 +52,7 @@ public class Admin_AdapterPostFeed extends RecyclerView.Adapter<Admin_AdapterPos
             desc_txt = view.findViewById(R.id.user_postfeed_postdesc);
             contact_btn = view.findViewById(R.id.Postfeed_contact_btn);
             image_user_show.setClipToOutline(true);
+            viewGroup = view.findViewById(android.R.id.content);
         }
 
         @Override
@@ -73,7 +83,32 @@ public class Admin_AdapterPostFeed extends RecyclerView.Adapter<Admin_AdapterPos
 
 
         contact_btn.setOnClickListener(view1 -> {
+            dialogView = LayoutInflater.from(view1.getContext()).inflate(R.layout.alert_custom_postfeed, viewGroup, false);
             Toast.makeText(context, ADPC.getPhoneNumber(), Toast.LENGTH_SHORT).show();
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
+            Button btn_call = dialogView.findViewById(R.id.btn_call);
+            EditText contactnumber = (EditText) dialogView.findViewById(R.id.contactnumber);
+            builder.setView(dialogView);
+            final AlertDialog alertDialog = builder.create();
+
+
+            contactnumber.setText(ADPC.getPhoneNumber());
+            btn_call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try{
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:"+ADPC.getPhoneNumber()));
+                        ((Activity)context).startActivity(intent);
+                        alertDialog.dismiss();
+//                        ((ViewGroup)dialogView.getParent()).removeAllViews();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+            alertDialog.show();
         });
     }
 

@@ -306,6 +306,7 @@ ImageView edit_post_post_image;
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(getApplicationContext(), "Post Edited Successfully", Toast.LENGTH_SHORT).show();
+                        Admin_EditPost.this.finish();
                         startActivity(new Intent(getApplicationContext(), Admin_ViewPost.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {

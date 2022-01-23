@@ -52,8 +52,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (firebaseUser != null) {
             if (firebaseUser.getEmail().equals("admin@bg.com")) {
+                LoginActivity.this.finish();
                 startActivity(new Intent(getApplicationContext(), Admin_Home.class));
             } else {
+                LoginActivity.this.finish();
                 startActivity(new Intent(getApplicationContext(), User_Home.class));
             }
         } else {
@@ -114,11 +116,13 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         if (Email.equals("admin@bg.com")) {
                             Toast.makeText(getApplicationContext(), "User Logged In Successfully", Toast.LENGTH_SHORT).show();
+                            LoginActivity.this.finish();
                             startActivity(new Intent(getApplicationContext(), Admin_Home.class));
                             progressBar.setVisibility(View.GONE);
                             enableField();
                         } else {
                             Toast.makeText(getApplicationContext(), "User Logged In Successfully", Toast.LENGTH_SHORT).show();
+                            LoginActivity.this.finish();
                             startActivity(new Intent(getApplicationContext(), User_Home.class));
                             progressBar.setVisibility(View.GONE);
                             enableField();

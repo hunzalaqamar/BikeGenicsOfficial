@@ -143,6 +143,7 @@ public class Admin_Home extends AppCompatActivity {
                 logout.setOnClickListener(view -> {
                     mAuth.signOut();
                     Toast.makeText(getApplicationContext(), "Log Out Successfully", Toast.LENGTH_SHORT).show();
+                    Admin_Home.this.finish();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 });
             } catch (Exception ex) {
